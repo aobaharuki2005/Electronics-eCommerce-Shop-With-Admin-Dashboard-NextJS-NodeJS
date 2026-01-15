@@ -4,8 +4,8 @@ FROM node:24-bullseye
 # Cập nhật hệ thống và cài đặt các công cụ cần thiết
 RUN apt-get update \ 
 && apt-get upgrade -y  \
-&& apt-get install -y netcat-openbsd \
-&& npm install -g npm@10.5.0
+&& apt-get --no-install-recommends install -y netcat-openbsd \
+&& npm install --ignore-scripts -g npm@10.5.0
 
 # Khai báo thư mục làm việc
 WORKDIR /app
@@ -15,8 +15,8 @@ COPY package*.json ./
 COPY server/package*.json ./server/
 
 # Cài đặt Node.js dependencies cho cả frontend lẫn backend
-RUN npm install \
-&& cd server && npm install
+RUN npm install --ignore-scripts \
+&& cd server && npm install --ignore-scripts
 
 # Copy toàn bộ mã nguồn vào container
 COPY . .
