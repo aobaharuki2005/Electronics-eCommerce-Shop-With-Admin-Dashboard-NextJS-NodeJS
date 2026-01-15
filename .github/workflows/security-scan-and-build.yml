@@ -2,7 +2,7 @@ name: Quét bảo mật tự động và Build-Push lên Docker Hub
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main ]
   pull_request:
     branches: [ main, develop ]
   workflow_dispatch:
