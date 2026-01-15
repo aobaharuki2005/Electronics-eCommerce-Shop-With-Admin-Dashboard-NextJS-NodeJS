@@ -28,7 +28,8 @@ jobs:
         run: |
           cd server
           npm install
-          npm test # Lệnh này sẽ tạo ra folder server/coverage/lcov.info
+          DATABASE_URL="file:./test.db" npx prisma generate
+          DATABASE_URL="file:./test.db" npm test # Lệnh này sẽ tạo ra folder server/coverage/lcov.info
       
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@fd88b7d7ccbaefd23d8f36f73b59db7a3d246602
