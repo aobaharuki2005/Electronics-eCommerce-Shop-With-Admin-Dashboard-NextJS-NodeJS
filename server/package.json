@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --coverage",
     "start": "node app.js",
     "logs": "node view-logs.js",
     "logs:access": "node view-logs.js access",
@@ -35,5 +35,16 @@
     "prisma": "6.16.3",
     "node-fetch": "^3.3.2",
     "winston": "^3.8.2"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "coverageReporters": ["text", "lcov"],
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/utills/insertDemoData.js"
+    ],
+    "testEnvironment": "node"
   }
 }
