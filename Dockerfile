@@ -2,7 +2,10 @@
 FROM node:24-bullseye
 
 # Cập nhật hệ thống và cài đặt các công cụ cần thiết
-RUN apt-get update && apt-get upgrade -y && apt-get install -y netcat-openbsd
+RUN apt-get update \ 
+&& apt-get upgrade -y  \
+&& apt-get install -y netcat-openbsd \
+&& npm install -g npm@10.5.0
 
 # Khai báo thư mục làm việc
 WORKDIR /app
