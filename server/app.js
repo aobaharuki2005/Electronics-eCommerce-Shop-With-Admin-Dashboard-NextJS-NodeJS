@@ -176,3 +176,13 @@ app.listen(PORT, () => {
   console.log('Rate limiting and request logging enabled for all endpoints');
   console.log('Logs are being written to server/logs/ directory');
 });
+
+// Cuối file app.js
+if (require.main === module) {
+  const PORT = process.env.PORT || 3001;
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
+
+module.exports = app; // Xuất app để Supertest sử dụng
