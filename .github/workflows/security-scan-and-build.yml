@@ -152,9 +152,10 @@ jobs:
         id: trivy_image_scan
         with:
           image-ref: '${{ secrets.DOCKERHUB_USERNAME }}/ecommerce-shop-fork:latest'
-          format: 'template'
-          template: "@$HOME/.local/bin/trivy-bin/contrib/html.tpl"
-          output: 'trivy_build_report.html'
+          # format: 'template'
+          # template: "@$HOME/.local/bin/trivy-bin/contrib/html.tpl"
+          # output: 'trivy_build_report.html'
+          format: 'table'
           exit-code: '1'  # Trả về lỗi (Fail job) nếu tìm thấy lỗ hổng
           ignore-unfixed: true
           vuln-type: 'os,library'
@@ -162,13 +163,13 @@ jobs:
         continue-on-error: true
       
       # Lưu kết quả quét vào mục Artifact
-      - name: Upload Report Artifact
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        if: always()
-        with: 
-          name: trivy-build-reports
-          path: |
-            trivy_build_report.html
+      # - name: Upload Report Artifact
+      #   uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      #   if: always()
+      #   with: 
+      #     name: trivy-build-reports
+      #     path: |
+      #       trivy_build_report.html
 
 
       # Nếu quẻt Trivy PASSED thì sẽ đẩy Docker Image lên Docker Hub
