@@ -5,7 +5,7 @@ FROM node:24-bullseye
 RUN apt-get update \ 
 && apt-get upgrade -y  \
 && apt-get --no-install-recommends install -y netcat-openbsd \
-&& npm install --ignore-scripts -g npm@10.5.0
+&& npm install --ignore-scripts -g npm@latest
 
 # Khai báo thư mục làm việc
 WORKDIR /app
